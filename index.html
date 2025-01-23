@@ -27,12 +27,12 @@
         logReq.send(payload);
     };
 
-    // Configure the request to the target URL
-    req.open('GET', targetUrl, true);
+    // Configure the request to the target URL as a POST
+    req.open('POST', targetUrl, true);
 
     // Enable sending credentials (cookies, etc.)
     req.withCredentials = true;
 
-    // Send the request
+    // Send the request with no payload
     req.send();
 </script>
